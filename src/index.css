@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Titillium Web', sans-serif;
+  }
+}
+
+/* Disclaimer overlay animations */
+.disclaimer-fade-enter {
+  opacity: 0;
+}
+
+.disclaimer-fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in-out;
+}
+
+.disclaimer-fade-exit {
+  opacity: 1;
+}
+
+.disclaimer-fade-exit-active {
+  opacity: 0;
+  transition: opacity 800ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.disclaimer-modal-enter {
+  opacity: 0;
+  transform: scale(0.97);
+}
+
+.disclaimer-modal-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.disclaimer-modal-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.disclaimer-modal-exit-active {
+  opacity: 0;
+  transform: scale(0.98);
+  transition: all 800ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Disclaimer button fade animations */
+.disclaimer-button-fade-enter {
+  opacity: 0;
+  transform: translateY(5px);
+}
+
+.disclaimer-button-fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.disclaimer-button-fade-exit {
+  opacity: 1;
+}
+
+.disclaimer-button-fade-exit-active {
+  opacity: 0;
+  transition: opacity 200ms ease-out;
+}
+
+/* Disclaimer button fade animations for centered button (page 2) */
+.disclaimer-button-fade-center-enter,
+.disclaimer-button-fade-center-appear {
+  opacity: 0;
+}
+
+.disclaimer-button-fade-center-enter-active,
+.disclaimer-button-fade-center-appear-active {
+  opacity: 1;
+  transition: opacity 550ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.disclaimer-button-fade-center-exit {
+  opacity: 1;
+}
+
+.disclaimer-button-fade-center-exit-active {
+  opacity: 0;
+  transition: opacity 200ms ease-out;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+/* Custom scrollbar styles */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(30, 41, 59, 0.4);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.5);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.7);
+}
+
+/* Custom text size between sm and md for navigation links */
+.nav-text-size {
+  font-size: 0.91875rem; /* 14.7px - between sm (14px) and md (16px), closer to sm */
+  line-height: 1.35rem; /* Adjusted line height */
+}
+
+/* Pulse animation for container border */
+@keyframes containerPulse {
+  0% {
+    box-shadow: 
+      0 0 0 0 rgba(147, 197, 253, 0.10),
+      0 7.52px 11.28px -2.256px rgba(0, 0, 0, 0.1),
+      0 3.008px 4.512px -1.504px rgba(0, 0, 0, 0.05);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 6.016px rgba(147, 197, 253, 0),
+      0 7.52px 11.28px -2.256px rgba(0, 0, 0, 0.1),
+      0 3.008px 4.512px -1.504px rgba(0, 0, 0, 0.05);
+  }
+  100% {
+    box-shadow: 
+      0 0 0 0 rgba(147, 197, 253, 0),
+      0 7.52px 11.28px -2.256px rgba(0, 0, 0, 0.1),
+      0 3.008px 4.512px -1.504px rgba(0, 0, 0, 0.05);
+  }
+}
+
+.container-pulse {
+  animation: containerPulse 1.4s ease-out;
+}
+
+/* Snake-like border tracing animation */
+.border-trace-animation {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.border-trace-svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.border-path {
+  fill: none;
+  stroke: url(#borderGradient);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  filter: drop-shadow(0 0 6px rgba(147, 197, 253, 0.6));
+  animation: borderSnake 1.8s ease-out forwards;
+}
+
+.border-path-glow {
+  fill: none;
+  stroke: rgba(147, 197, 253, 0.4);
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  filter: blur(8px);
+  animation: borderSnake 1.8s ease-out forwards;
+}
+
+@keyframes borderSnake {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+/* Globe container styles */
+.globe-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* The canvas created by VantaJS */
+.globe-container > .vanta-canvas {
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Pulse glow animation for Simula.Earth text */
+@keyframes pulse-glow {
+  0% {
+    filter: blur(0.3px) brightness(1);
+    text-shadow: 
+      0 0 10px rgba(96, 165, 250, 0.8),
+      0 0 20px rgba(96, 165, 250, 0.6),
+      0 0 30px rgba(96, 165, 250, 0.4),
+      0 0 40px rgba(96, 165, 250, 0.3),
+      0 0 60px rgba(96, 165, 250, 0.2);
+  }
+  50% {
+    filter: blur(0.2px) brightness(1.4);
+    text-shadow: 
+      0 0 15px rgba(96, 165, 250, 1),
+      0 0 30px rgba(96, 165, 250, 0.8),
+      0 0 45px rgba(96, 165, 250, 0.6),
+      0 0 60px rgba(96, 165, 250, 0.4),
+      0 0 80px rgba(96, 165, 250, 0.3);
+  }
+  100% {
+    filter: blur(0.3px) brightness(1);
+    text-shadow: 
+      0 0 10px rgba(96, 165, 250, 0.8),
+      0 0 20px rgba(96, 165, 250, 0.6),
+      0 0 30px rgba(96, 165, 250, 0.4),
+      0 0 40px rgba(96, 165, 250, 0.3),
+      0 0 60px rgba(96, 165, 250, 0.2);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 600ms ease-out;
+}
